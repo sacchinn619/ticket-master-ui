@@ -22,11 +22,12 @@ class Employee extends React.Component{
         }
         handleSubmit=(e)=>{
             e.preventDefault()
+            const dept=this.props.department.find(dept=>dept.name==this.state.department)  
             const formData={
                 name:this.state.name,
                 email:this.state.email,
                 mobile:this.state.mobile,
-                department:this.state.department
+                department:dept && dept._id
             }
             this.props.dispatch(startGetEmployee(formData))
             
@@ -94,12 +95,12 @@ class Employee extends React.Component{
                 <label>Department</label>
                 <select value={this.state.department} name="department" onChange={this.handleChange} > 
                     <option value="">---Select---</option>
-                    <option value={this.props.department.map((ele)=>{
-                        return  ele._id
-                    })}>
-                        {this.props.department.map((ele)=>{
-                        return ele.name
-                    })} </option>
+                    <option>select</option>
+                                        {
+                                            this.props.department.map(dept=>{
+                                                return <option key={dept._id} value={dept.name}>{dept.name}</option>
+                                            })
+                                        }
                     
                     </select><br/>
                 <input type="submit" value="Submit"/>
