@@ -22,13 +22,13 @@ class Employee extends React.Component{
         }
         handleSubmit=(e)=>{
             e.preventDefault()
-            const dept=this.props.department.find(dept=>dept.name==this.state.department)  
+        
             
             const formData={
                 name:this.state.name,
                 email:this.state.email,
                 mobile:this.state.mobile,
-                department:dept && dept._id
+                department:this.state.department
             }
             this.props.dispatch(startGetEmployee(formData))
             
@@ -60,8 +60,9 @@ class Employee extends React.Component{
                         <td>name</td>
                         <td>email</td>
                         <td>mobile</td>
-                        <td>Button-Handler</td>
                         <td>department</td>
+                        <td>Button-Handler</td>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -72,14 +73,19 @@ class Employee extends React.Component{
                                 <td> {ele.name}</td>
                                 <td> {ele.email}</td>
                                 <td> {ele.mobile}</td>
+                                <td>{this.props.department.map(dep => {
+                      return(
+                        (dep._id == ele.department._id) && dep.name
+                      )
+                    })}</td>
+
                                 <button onClick={()=>{
                              this.handleShow(ele.name)
                           }}>show</button>||
                           <button onClick={()=>{
                               this.handleRemove(ele._id)
                           }}>remove</button>
-                           {this.props.department.map((ele)=>{
-                        return <td>{ele.name}</td>})}
+                           
                                 </tr>)
                         })}
                          
@@ -99,7 +105,9 @@ class Employee extends React.Component{
                     <option>select</option>
                                         {
                                             this.props.department.map(dept=>{
-                                                return <option key={dept._id} value={dept.name}>{dept.name}</option>
+                                                return (
+                                                    <option key={dept._id} value={dept._id}>{dept.name}</option>
+                                                )
                                             })
                                         }
                     
