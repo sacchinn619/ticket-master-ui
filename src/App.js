@@ -6,6 +6,7 @@ import Register from './components/auth/Register'
 import Customers from './components/auth/Customers'
 import Department from './components/auth/Department'
 import Employees from './components/auth/Employees'
+import Ticket from './components/auth/Ticket'
 import {connect } from 'react-redux'
 import {startUserLogout} from './actions/userAction'
 
@@ -28,6 +29,7 @@ function App(props){
               <Link to="/customers">Customers</Link>
               <Link to="/departments">Departments</Link>
               <Link to="/employees">Employees</Link>
+              <Link to ="/tickets">Ticket</Link>
             </div>):
             (<div><Link to= "/users/register">Register</Link>
                  <Link to ="/users/login"> Login</Link></div>) }
@@ -40,6 +42,7 @@ function App(props){
     <Route path="/customers" component={Customers}/>
     <Route path ="/departments" component={Department}/>
     <Route path="/employees" component={Employees}/>
+    <Route path="/tickets" component ={Ticket}/>
 </Switch>
 
 

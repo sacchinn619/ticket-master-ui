@@ -7,6 +7,7 @@ import {startGetUser } from './actions/userAction'
 import { startSetDepartment } from './actions/departmentAction'
 import {startSetCustomer} from './actions/customerAction'
 import {startSetEmployee} from './actions/employeeAction'
+import {startSetTicket}  from './actions/ticketAction'
 
 const store= configureStore()
 console.log(store.getState())
@@ -26,6 +27,9 @@ if(localStorage.getItem('authToken')){
 
 if(localStorage.getItem('authToken')){
     store.dispatch(startSetEmployee())
+}
+if(localStorage.getItem('authToken')){
+    store.dispatch(startSetTicket())
 }
 
 const jsx=(<Provider store={store}>

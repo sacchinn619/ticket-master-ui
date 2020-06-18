@@ -23,6 +23,7 @@ class Employee extends React.Component{
         handleSubmit=(e)=>{
             e.preventDefault()
             const dept=this.props.department.find(dept=>dept.name==this.state.department)  
+            
             const formData={
                 name:this.state.name,
                 email:this.state.email,
@@ -38,8 +39,8 @@ class Employee extends React.Component{
             department:''
             })
             
-
         }
+        
         handleShow=(name)=>{
           alert(name)
         }
