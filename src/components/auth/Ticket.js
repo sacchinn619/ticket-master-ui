@@ -76,12 +76,24 @@ class Ticket extends React.Component{
                     <tbody>
                         
         {this.props.ticket.map((ele)=>{
+            
            return(
             <tr>
             <td>{ele.code}</td>
-            <td>{ele.customer}</td>
-            <td>{ele.department}</td>
-            <td>{ele.employee}</td>
+            <td>{this.props.customer.map((cust)=>{
+                return (ele.customer==cust._id)&&cust.name
+            })}</td>
+               
+        <td>{this.props.department.map((dep)=>{
+            return(ele.department==dep._id)&&dep.name
+        })}</td>
+            {ele.employees.map((jes)=>{
+                return (
+                    <td> {this.props.employee.map((emply)=>{
+                        return (emply._id===jes._id)&& emply.name
+                    })}</td>
+                    )
+            })}
             <td>{ele.message}</td>
             <td>{ele.priority}</td>
             <td><button onClick={()=>{

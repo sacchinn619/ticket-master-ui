@@ -61,7 +61,7 @@ class Employee extends React.Component{
                         <td>email</td>
                         <td>mobile</td>
                         <td>department</td>
-                        <td>Button-Handler</td>
+                        <td>Button-Handler</td> 
                         
                     </tr>
                 </thead>
@@ -75,7 +75,7 @@ class Employee extends React.Component{
                                 <td> {ele.mobile}</td>
                                 <td>{this.props.department.map(dep => {
                       return(
-                        (dep._id == ele.department._id) && dep.name
+                        (dep._id ===ele.department._id) && dep.name
                       )
                     })}</td>
 
