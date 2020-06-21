@@ -57,3 +57,24 @@ export const startRemoveCustomer=(id)=>{
     }
 
 }
+export const EditCustomer=(id,data)=>{
+return{type:'EDIT_CUSTOMER', payload:{
+    id,data
+}}
+}
+export const startEditCustomer=(formData,id)=>{
+      return function(dispatch){
+        axios.put(`/customers/${id}`,formData,{
+            headers:{
+                'x-auth':localStorage.getItem('authToken')
+            }
+        })
+        .then((response)=>{
+            const cust=response.data
+            dispatch(EditCustomer(id,cust))
+        })
+        .then((err)=>{
+            console.log(err)
+        })
+      }
+}

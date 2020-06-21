@@ -69,7 +69,7 @@ class Employee extends React.Component{
                     
                         {this.props.employee.map((ele)=>{
                             return(
-                                <tr>
+                                <tr key={ele._id}>
                                 <td> {ele.name}</td>
                                 <td> {ele.email}</td>
                                 <td> {ele.mobile}</td>
@@ -118,8 +118,8 @@ class Employee extends React.Component{
         </div>)
     }
 }
-const mapStateToProps=(state)=>{
-    console.log( 'from',state)
+const mapStateToProps=(state,props)=>{
+    console.log( 'from',props)
     return{
         department:state.department,
         employee:state.employee

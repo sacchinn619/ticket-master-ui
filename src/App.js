@@ -4,6 +4,8 @@ import Home from './components/static/Home'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Customers from './components/auth/Customers'
+import CustomerShow from './components/auth/CustomerShow'
+import CustomerEdit from './components/auth/CustomerEdit'
 import Department from './components/auth/Department'
 import Employees from './components/auth/Employees'
 import Ticket from './components/auth/Ticket'
@@ -43,6 +45,9 @@ function App(props){
     <Route path ="/departments" component={Department}/>
     <Route path="/employees" component={Employees}/>
     <Route path="/tickets" component ={Ticket}/>
+    <Route path="/customer/:id" component={CustomerShow} exact={true}/>
+    <Route path="/customer/edit/:id" component={CustomerEdit}/>
+
 </Switch>
 
 

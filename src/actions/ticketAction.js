@@ -30,7 +30,7 @@ export const startGetTicket=(formData)=>{
        })
        .then((response)=>{
            const data=response.data
-        //    console.log('hello',data)
+           console.log('hello',data)
         dispatch(setTicket(data))
           
     })
@@ -51,7 +51,7 @@ export const startRemoveTicket=(id)=>{
        })
        .then((response)=>{
            const data=response.data
-             dispatch(removeTicket(data))
+           dispatch(removeTicket(data))
        })
        .then((err)=>{
            console.log(err)

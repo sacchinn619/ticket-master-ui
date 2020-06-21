@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {startGetCustomer, startRemoveCustomer} from '../../actions/customerAction'
 
+
  class Customer extends React.Component{
      constructor(props){
          super(props)
@@ -33,8 +34,8 @@ import {startGetCustomer, startRemoveCustomer} from '../../actions/customerActio
          })
           this.props.dispatch(startGetCustomer(formData))
           }
-          handleShow=(name)=>{
-              alert(name)
+          handleShow=(id)=>{
+              this.props.history.push(`/customer/${id}`)
           }
           handleRemove=(id)=>{
              const confirm= window.confirm('Are you sure?')
@@ -43,8 +44,12 @@ import {startGetCustomer, startRemoveCustomer} from '../../actions/customerActio
             this.props.dispatch(startRemoveCustomer(id))
           } 
         }
-
-     render(){
+        handleEdit=(id)=>{
+            this.props.history.push(`customer/edit/${id}`)
+        }
+        
+          
+        render(){
          return(<div>
              <h2>Add Customer</h2>
              {Object.keys(this.props.customer).length!==0 &&
@@ -68,11 +73,14 @@ import {startGetCustomer, startRemoveCustomer} from '../../actions/customerActio
                          <td>{ele.email}</td>
                          <td>{ele.mobile}</td>
                           <button onClick={()=>{
-                             this.handleShow(ele.name)
+                             this.handleShow(ele._id)
                           }}>show</button>||
                           <button onClick={()=>{
                               this.handleRemove(ele._id)
                           }}>remove</button>
+                          <button onClick={()=>{
+                              this.handleEdit(ele._id)
+                          }}>Edit</button>
                          </tr>
                          )
                         
@@ -94,10 +102,17 @@ import {startGetCustomer, startRemoveCustomer} from '../../actions/customerActio
          </div>)
      }
  }
- const mapStateToProps=(state)=>{
-     console.log('redux store',state)
+ 
+ 
+
+
+ const mapStateToProps=(state,props)=>{
+     console.log('props',props)
 return{
-    customer:state.customer
-}
+    customer:state.customer,
+    
+    
  }
+}
+
  export default connect(mapStateToProps)(Customer)

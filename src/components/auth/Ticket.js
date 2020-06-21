@@ -76,8 +76,7 @@ class Ticket extends React.Component{
                     <tbody>
                         
         {this.props.ticket.map((ele)=>{
-            
-           return(
+            return(
             <tr>
             <td>{ele.code}</td>
             <td>{this.props.customer.map((cust)=>{
@@ -94,6 +93,7 @@ class Ticket extends React.Component{
                     })}</td>
                     )
             })}
+            
             <td>{ele.message}</td>
             <td>{ele.priority}</td>
             <td><button onClick={()=>{
@@ -152,8 +152,8 @@ class Ticket extends React.Component{
         )
     }
 }
-const mapStateToProps=(state)=>{
-    console.log(state.ticket)
+const mapStateToProps=(state,props)=>{
+    console.log('j',props)
     return{
         customer:state.customer,
         department:state.department,

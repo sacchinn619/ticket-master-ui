@@ -34,7 +34,7 @@ export const startGetDepartment=(formData)=>{
                 alert(response.data.message)
             } else {
                 const data = response.data
-            //    console.log(data)
+                // console.log(data)
                dispatch(addDepartment(data))
             }
         })
