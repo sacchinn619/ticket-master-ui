@@ -30,7 +30,9 @@ class Employee extends React.Component{
                 mobile:this.state.mobile,
                 department:this.state.department
             }
+            
             this.props.dispatch(startGetEmployee(formData))
+            console.log(formData)
             
             this.setState({
             name:'',
@@ -51,6 +53,9 @@ class Employee extends React.Component{
             }
             
             
+        }
+        handleEdit=(id)=>{
+         this.props.history.push(`/employees/edit/${id}`)
         }
     render(){
         return(<div>
@@ -74,9 +79,7 @@ class Employee extends React.Component{
                                 <td> {ele.email}</td>
                                 <td> {ele.mobile}</td>
                                 <td>{this.props.department.map(dep => {
-                      return(
-                        (dep._id ===ele.department._id) && dep.name
-                      )
+                      return (dep._id==ele.department._id) && ele.department.name
                     })}</td>
 
                                 <button onClick={()=>{
@@ -84,7 +87,10 @@ class Employee extends React.Component{
                           }}>show</button>||
                           <button onClick={()=>{
                               this.handleRemove(ele._id)
-                          }}>remove</button>
+                          }}>remove</button>||
+                          <button onClick={()=>{
+                              this.handleEdit(ele._id)
+                          }}>Edit</button>
                            
                                 </tr>)
                         })}

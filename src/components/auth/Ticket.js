@@ -11,7 +11,7 @@ class Ticket extends React.Component{
             code:'',
             customer:'',
             department:'',
-            employees:{},
+            employees:'',
             message:'',
             priority:''
         }
@@ -76,7 +76,10 @@ class Ticket extends React.Component{
                     <tbody>
                         
         {this.props.ticket.map((ele)=>{
-            return(
+            const emply=ele.employees.map((em)=>{
+                return em.employee
+            })
+           return(
             <tr>
             <td>{ele.code}</td>
             <td>{this.props.customer.map((cust)=>{
@@ -86,13 +89,9 @@ class Ticket extends React.Component{
         <td>{this.props.department.map((dep)=>{
             return(ele.department==dep._id)&&dep.name
         })}</td>
-            {ele.employees.map((jes)=>{
-                return (
-                    <td> {this.props.employee.map((emply)=>{
-                        return (emply._id===jes._id)&& emply.name
-                    })}</td>
-                    )
-            })}
+            <td> {this.props.employee.map((el)=>{
+                return (el._id==emply) && el.name
+            })}</td>
             
             <td>{ele.message}</td>
             <td>{ele.priority}</td>
@@ -153,7 +152,7 @@ class Ticket extends React.Component{
     }
 }
 const mapStateToProps=(state,props)=>{
-    console.log('j',props)
+    // console.log('j',props)
     return{
         customer:state.customer,
         department:state.department,

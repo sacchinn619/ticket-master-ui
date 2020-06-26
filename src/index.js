@@ -17,20 +17,12 @@ store.subscribe(()=>{
 // handle page reload//
 if(localStorage.getItem('authToken')){
     store.dispatch(startGetUser())
-}
-if(localStorage.getItem('authToken')){
     store.dispatch(startSetDepartment())
-}
-if(localStorage.getItem('authToken')){
     store.dispatch(startSetCustomer())
-}
-
-if(localStorage.getItem('authToken')){
     store.dispatch(startSetEmployee())
-}
-if(localStorage.getItem('authToken')){
     store.dispatch(startSetTicket())
 }
+
 
 const jsx=(<Provider store={store}>
     <App/>

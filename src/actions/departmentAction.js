@@ -61,4 +61,23 @@ export const startRemoveDepartment=(id)=>{
         })
     }
 }
-    
+export const editDepartment=(data,id)=>{
+    return {type:'EDIT_DEPARTMENT',payload:{data,id}
+}
+}
+export const startEditDepartment=(formData,id)=>{
+     return function(dispatch){
+     axios.put(`/departments/${id}`,formData,{
+         headers:{
+             'x-auth':localStorage.getItem('authToken')
+         }
+     })
+     .then((response)=>{
+         const data=response.data
+        dispatch (editDepartment(data,id))
+     })
+     .catch((err)=>{
+         console.log(err)
+     })
+     }
+}    

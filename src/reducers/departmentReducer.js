@@ -11,6 +11,18 @@ const departmentReducer=(state=[],action)=>{
               return ele._id != (action.payload)
             })
           }
+          case 'EDIT_DEPARTMENT':{
+            return state.map(dep=>{//mapping depart array[{},{}]that contains each ele as an object//
+              if(dep._id==action.payload.id){
+                  return Object.assign({},dep,action.payload.data)
+                  
+              }
+              else{
+                  return Object.assign({},dep)
+              }
+          })
+          }
+          
            default:{
                return state
            }

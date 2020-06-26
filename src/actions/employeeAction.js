@@ -66,3 +66,22 @@ export const startRemoveEmployee=(id)=>{
     }
 
 }
+export  const editEmployees=(data,id)=>{
+       return {type:'EDIT_EMPLOYEES' ,payload: {data,id}}
+}
+export const startEditEmployee=(data,id)=>{
+    return function(dispatch){
+        axios.put(`employees/${id}`,data,{
+            headers:{
+                'x-auth':localStorage.getItem('authToken')
+            }
+        })
+        .then((response)=>{
+            const data=response.data
+            dispatch(editEmployees(data,id))
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+}

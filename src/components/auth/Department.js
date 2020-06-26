@@ -38,6 +38,9 @@ class Department extends React.Component{
          
         
     }
+    handleEdit=(id)=>{
+    this.props.history.push(`/department/edit/${id}`)
+    }
     render(){
         return(<div>
             
@@ -46,7 +49,10 @@ class Department extends React.Component{
                     this.handleShow(ele.name)
                 }}>show</button><button onClick={()=>{
                     this.handleRemove(ele._id)
-                }}>remove</button></h3>
+                }}>remove</button>
+                <button onClick={()=>{
+                    this.handleEdit(ele._id)
+                }}>Edit</button></h3>
             })}
             <h2>Add Department</h2>
             <form onSubmit={this.handleSubmit}>

@@ -73,8 +73,8 @@ export const startEditCustomer=(formData,id)=>{
             const cust=response.data
             dispatch(EditCustomer(id,cust))
         })
-        .then((err)=>{
-            console.log(err)
-        })
+        // .then((err)=>{
+        //     console.log(err)
+        // })
       }
 }

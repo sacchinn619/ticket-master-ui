@@ -7,9 +7,9 @@ constructor(props)
 {
         super(props)
         this.state={
-            name:  this.props.customer.name,
-            email: this.props.customer.email,
-            mobile: this.props.customer.mobile
+            name: this.props.customer?.name,//es2020-this.props.customer ?(truthy)then .name=>returns name
+            email:this.props.customer?.email,
+            mobile:this.props.customer?.mobile
         }
     }
     handleChange=(e)=>{
@@ -52,9 +52,9 @@ constructor(props)
     }
 }
 const mapStateToProps=(state, props)=>{
-    // console.log(props)
+    console.log(props)
 return{
-    customer:state.customer.find((ele)=>{
+    customer:state.customer.find((ele)=>{// customer:[ {},{},{},{},{} ] //
         return ele._id==props.match.params.id  
 //*Will return the customer object witin the customers array that matches the ID from the find function//*
         

@@ -11,6 +11,15 @@ case 'ADD_EMPLOYEE':{
             return ele._id!==(action.payload)
         })
     }
+    case'EDIT_EMPLOYEES':{
+        return state.map((ele)=>{
+            if(ele._id==action.payload.id){
+               return Object.assign({},ele,action.payload.data)
+            } else{
+               return Object.assign({},ele)
+            }
+        })
+    }
     
     default:{
         return state

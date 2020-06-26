@@ -5,8 +5,10 @@ import {startGetCustomer, startRemoveCustomer} from '../../actions/customerActio
 
  class Customer extends React.Component{
      constructor(props){
+       
          super(props)
-         console.log(this.props.customer,'here')
+         console.log(this.props,'here')
+         
          this.state={
              name:'',
              email:'',
@@ -19,6 +21,7 @@ import {startGetCustomer, startRemoveCustomer} from '../../actions/customerActio
          })
 
      }
+     
      handleSubmit=(e)=>{
          e.preventDefault()
          const formData={
