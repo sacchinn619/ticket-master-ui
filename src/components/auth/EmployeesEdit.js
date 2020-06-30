@@ -23,8 +23,7 @@ class EmployeesEdit extends React.Component{
            email:this.state.email,
            mobile:this.state.mobile,
            department:this.state.department
-           
-       }
+}
       const redirect=()=>{
            this.props.history.push('/employees')
        }
@@ -63,7 +62,7 @@ const mapStateToProps=(state,props)=>{
     console.log(props)
 return{
     employee:state.employee.find((ele)=>{
-        return ele._id==props.match.params.id   //returns {employee1 details} 
+        return ele._id==props.match.params.id //returns {employee1 details} 
     }),
     department:state.department
     

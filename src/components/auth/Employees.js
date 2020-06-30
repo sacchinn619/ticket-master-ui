@@ -78,9 +78,9 @@ class Employee extends React.Component{
                                 <td> {ele.name}</td>
                                 <td> {ele.email}</td>
                                 <td> {ele.mobile}</td>
-                                <td>{this.props.department.map(dep => {
-                      return (dep._id==ele.department._id) && ele.department.name
-                    })}</td>
+                                <td>{this.props.department.map((dep)=>{
+                          return (ele.department._id==dep._id)&&dep.name
+                                })}</td>
 
                                 <button onClick={()=>{
                              this.handleShow(ele.name)
@@ -125,7 +125,7 @@ class Employee extends React.Component{
     }
 }
 const mapStateToProps=(state,props)=>{
-    console.log( 'from',props)
+    // console.log( 'from',props)
     return{
         department:state.department,
         employee:state.employee

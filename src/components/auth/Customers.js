@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {startGetCustomer, startRemoveCustomer} from '../../actions/customerAction'
+import {startGetCustomer, startRemoveCustomer,startSetCustomer} from '../../actions/customerAction'
 
 
  class Customer extends React.Component{
@@ -50,7 +50,11 @@ import {startGetCustomer, startRemoveCustomer} from '../../actions/customerActio
         handleEdit=(id)=>{
             this.props.history.push(`customer/edit/${id}`)
         }
-        
+        // componentDidMount(){
+        //     if(this.props.customer.length==0){
+        //         this.props.dispatch(startSetCustomer())
+        //     }
+        // }
           
         render(){
          return(<div>

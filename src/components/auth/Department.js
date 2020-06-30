@@ -34,6 +34,7 @@ class Department extends React.Component{
          const confirm=window.confirm('Are you Sure')
          if (confirm){
             this.props.dispatch(startRemoveDepartment(id))
+            
          }
          
         
@@ -41,6 +42,11 @@ class Department extends React.Component{
     handleEdit=(id)=>{
     this.props.history.push(`/department/edit/${id}`)
     }
+    // componentDidMount(){
+    //     if(this.props.department.length==0){
+    //         this.props.dispatch(startSetDepartment())
+    //     }
+    // }
     render(){
         return(<div>
             
