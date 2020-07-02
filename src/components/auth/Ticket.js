@@ -56,6 +56,9 @@ class Ticket extends React.Component{
    handleShow=(message)=>{
        alert(message)
    }
+   handleEdit=(id)=>{
+    this.props.history.push(`/tickets/edit/${id}`)
+   }
     
     render(){
         return(
@@ -71,6 +74,7 @@ class Ticket extends React.Component{
                             <td>Priority</td>
                             <td>Actions</td>
                             <td>Remove</td>
+                            <td>Edit</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,6 +105,9 @@ class Ticket extends React.Component{
             <td><button onClick={()=>{
                 this.handleRemove(ele._id)
                 }}>Remove</button></td>
+                <td><button onClick={()=>{
+                    this.handleEdit(ele._id)
+                }}>Edit</button></td>
             </tr> 
            ) 
         })}

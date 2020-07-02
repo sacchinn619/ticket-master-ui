@@ -58,3 +58,23 @@ export const startRemoveTicket=(id)=>{
        })
    }
 }
+export const editTicket=(data,id)=>{
+return {type:'EDIT_TICKET', payload:{data,id}}
+}
+
+export const startEditTicket=(formData,id)=>{
+    return function(dispatch){
+    axios.put(`/tickets/${id}`,formData,{
+        headers:{
+            'x-auth':localStorage.getItem('authToken')
+        }
+    })
+    .then((response)=>{
+        const data=response.data
+        dispatch(editTicket(data,id))
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+    }
+}

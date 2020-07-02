@@ -10,6 +10,7 @@ import Department from './components/auth/Department'
 import DepartmentEdit from './components/auth/DepartmentEdit'
 import Employees from './components/auth/Employees'
 import Ticket from './components/auth/Ticket'
+import TicketEdit from './components/auth/TicketEdit'
 import {connect } from 'react-redux'
 import {startUserLogout} from './actions/userAction'
 import EmployeesEdit from './components/auth/EmployeesEdit'
@@ -46,11 +47,13 @@ function App(props){
     <Route path="/customers" component={Customers}/>
     <Route path ="/departments" component={Department}/>
     <Route path="/employees" component={Employees} exact={true}/>
-    <Route path="/tickets" component ={Ticket}/>
+    <Route path="/tickets" component={Ticket} exact={true}/>
+    <Route path="/tickets/edit/:id" component={TicketEdit}/>
     <Route path="/customer/:id" component={CustomerShow} exact={true}/>
     <Route path="/customer/edit/:id" component={CustomerEdit}/>
     <Route path="/department/edit/:id" component={DepartmentEdit}/>
     <Route path="/employees/edit/:id" component={EmployeesEdit}/>
+    
 
 </Switch>
 

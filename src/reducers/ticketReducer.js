@@ -8,6 +8,15 @@ const ticketReducer=(state=[],action)=>{
                return ele._id!==(action.payload)
            })
        }
+       case 'EDIT_TICKET':{
+           return state.map((ele)=>{
+               if(ele._id==action.payload.id){
+                   return Object.assign({},ele,action.payload.data)
+               }else{
+                   return Object.assign({},ele)
+               }
+           })
+       }
        default:{
            return state
        }
