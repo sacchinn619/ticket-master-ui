@@ -5,7 +5,7 @@ const ticketReducer=(state=[],action)=>{
        }
        case 'REMOVE_TICKET':{
            return state.filter(ele=>{
-               return ele._id!==(action.payload)
+               return ele._id!==(action.payload._id)
            })
        }
        case 'EDIT_TICKET':{

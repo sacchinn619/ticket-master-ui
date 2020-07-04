@@ -8,7 +8,7 @@ case 'ADD_EMPLOYEE':{
     }
     case 'REMOVE_EMPLOYEE':{
         return state.filter((ele)=>{
-            return ele._id!==(action.payload)
+            return ele._id!==(action.payload._id)
         })
     }
     case'EDIT_EMPLOYEES':{

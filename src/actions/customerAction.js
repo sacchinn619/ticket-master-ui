@@ -43,6 +43,9 @@ export const startSetCustomer=()=>{
           })
     }
 }
+export const removeCustomer=(data)=>{
+return {type:'REMOVE_CUSTOMER', payload:data}
+}
 export const startRemoveCustomer=(id)=>{
     return function(dispatch){
         axios.delete(`/customers/${id}`,{
@@ -52,7 +55,7 @@ export const startRemoveCustomer=(id)=>{
         })
         .then((response)=>{
             const data=response.data
-            console.log(data)
+            dispatch(removeCustomer(data))
         })
     }
 
